@@ -1,5 +1,7 @@
 import React from "react";
 import { Heading } from "../components/Heading";
+import { Span } from "../components/Span";
+import { Button } from "../components/Button";
 
 const StepTwo = () => {
   return (
@@ -8,10 +10,12 @@ const StepTwo = () => {
         <div className="variants-quiz">
           <div className="indicator">
             <div className="indicator__text">
-              <span className="indicator__description">
+              {/* <span className="indicator__description">
                 Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
+              </span> */}
+              {/* <span className="indicator__value">15%</span> */}
+              <Span spanText="Скидка за прохождение опроса:" />
+              <Span spanText="15%" />
             </div>
             <div className="indicator__progressbar">
               <div className="indicator__unit indicator__unit-1 _active"></div>
@@ -41,9 +45,10 @@ const StepTwo = () => {
                 <label htmlFor="variant-4">Ваш ответ</label>
               </li>
             </ul>
-            <button type="button" disabled id="next-btn">
+            {/* <button type="button" disabled id="next-btn">
               Далее
-            </button>
+            </button> */}
+            <Button buttonType="button" buttonText="Далее" isDisabled />
           </div>
         </div>
       </div>

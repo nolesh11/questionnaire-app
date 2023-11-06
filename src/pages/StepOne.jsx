@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Heading } from "../components/Heading";
 import { Input } from "../components/Input";
 import { Button } from "../components/Button";
 import { Span } from "../components/Span";
 
 const StepOne = () => {
+  const [answerValue, setAnswerValue] = useState("");
+  const [answerError, setAnswerError] = useState("");
+  const clickHandler = () => {
+    if (!answerValue) {
+      setAnswerError(true);
+    } else {
+      setAnswerError(false);
+    }
+  };
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -24,12 +34,15 @@ const StepOne = () => {
           <div className="question">
             <Heading text="1. Занимательный вопрос" headingType="h2" />
             <Input
+              hasError={answerError}
+              value={answerValue}
+              onChange={setAnswerValue}
               isRequired
               id="answer"
               inputPlaceholder="Ваш ответ"
               errorMessage="Введите номер в правильном формате например"
             />
-            <Button buttonText="Далее" buttonType="button" />
+            <Button onClick={clickHandler} buttonText="Далее" buttonType="button" />
           </div>
         </div>
       </div>
