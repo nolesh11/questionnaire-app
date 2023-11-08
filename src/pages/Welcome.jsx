@@ -23,9 +23,6 @@ const Welcome = () => {
     }
   };
 
-  // useEffect(() => {
-  // }, [nameValue, phoneError]);
-
   return (
     <div className="container">
       <div className="wrapper">
