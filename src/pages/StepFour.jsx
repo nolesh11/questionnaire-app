@@ -1,51 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
+import { LinkButton } from "../components/LinkButton";
+import { ProgressBar } from "../components/ProgressBar";
+import { Heading } from "../components/Heading";
+import { AnswerItem } from "../components/AnswerItem";
 
 const StepFour = () => {
+  const [checkedAnswer, setCheckedAnswer] = useState(null);
+
+  const variants = [
+    {
+      id: "variant-1",
+      answerLable: "1",
+    },
+    {
+      id: "variant-2",
+      answerLable: "2",
+    },
+    {
+      id: "variant-3",
+      answerLable: "3",
+    },
+    {
+      id: "variant-4",
+      answerLable: "4",
+    },
+    {
+      id: "variant-5",
+      answerLable: "5",
+    },
+  ];
   return (
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <span className="indicator__description">
-                Скидка за прохождение опроса:
-              </span>
-              <span className="indicator__value">15%</span>
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1 _active"></div>
-              <div className="indicator__unit indicator__unit-2 _active"></div>
-              <div className="indicator__unit indicator__unit-3 _active"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <ProgressBar currentSrep={4} />
           <div className="question">
-            <h2>4. Занимательный вопрос</h2>
+            <Heading text="4. Занимательный вопрос" headingType="h2" />
             <ul className="level-variants">
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-1" />
-                <label htmlFor="variant-1">1</label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-2" />
-                <label htmlFor="variant-2">2</label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-3" />
-                <label htmlFor="variant-3">3</label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-4" />
-                <label htmlFor="variant-4">4</label>
-              </li>
-              <li className="variant-wrapper">
-                <input required type="radio" name="variant" id="variant-5" />
-                <label htmlFor="variant-5">5</label>
-              </li>
+              {variants.map((elem) => (
+                <AnswerItem
+                  key={elem.id}
+                  id={elem.id}
+                  className={elem.class}
+                  answerLable={elem.answerLable}
+                  onChange={() => setCheckedAnswer(elem.id)}
+                  isChecked={elem.id === checkedAnswer}
+                />
+              ))}
             </ul>
-            <button type="button" id="next-btn" disabled>
-              Далее
-            </button>
+            <LinkButton
+              path="/thanks"
+              buttonText="Далее"
+              buttonType="button"
+              isDisabled={!checkedAnswer}
+            />
           </div>
         </div>
       </div>

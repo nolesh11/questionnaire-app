@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ProgressBar } from "../components/ProgressBar";
 import { Heading } from "../components/Heading";
 import { AnswerItem } from "../components/AnswerItem";
+import { LinkButton } from "../components/LinkButton";
 
 const StepThree = () => {
   const [checkedAnswer, setCheckedAnswer] = useState(null);
@@ -34,7 +35,7 @@ const StepThree = () => {
     <div className="container">
       <div className="wrapper">
         <div className="emoji-quiz">
-          <ProgressBar />
+          <ProgressBar currentSrep={3} />
           <div className="question">
             <Heading text="3. Занимательный вопрос" headingType="h2" />
             <ul className="emoji-variants">
@@ -49,9 +50,13 @@ const StepThree = () => {
                 />
               ))}
             </ul>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+
+            <LinkButton
+              path="/step-four"
+              buttonText="Далее"
+              buttonType="button"
+              isDisabled={!checkedAnswer}
+            />
           </div>
         </div>
       </div>

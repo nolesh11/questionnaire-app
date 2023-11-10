@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Heading } from "../components/Heading";
-import { Button } from "../components/Button";
+// import { Button } from "../components/Button";
 import { ProgressBar } from "../components/ProgressBar";
 import { AnswerItem } from "../components/AnswerItem";
+import { LinkButton } from "../components/LinkButton";
 
 const StepTwo = () => {
   const [checkedAnswer, setCheckedAnswer] = useState(null);
@@ -34,7 +35,7 @@ const StepTwo = () => {
     <div className="container">
       <div className="wrapper">
         <div className="variants-quiz">
-          <ProgressBar />
+          <ProgressBar currentSrep={2} />
           <div className="question">
             <Heading text="1. Занимательный вопрос" headingType="h2" />
             <ul className="variants">
@@ -48,7 +49,12 @@ const StepTwo = () => {
                 />
               ))}
             </ul>
-            <Button buttonType="button" buttonText="Далее" />
+            <LinkButton
+              path="/step-three"
+              buttonText="Далее"
+              buttonType="button"
+              isDisabled={!checkedAnswer}
+            />
           </div>
         </div>
       </div>

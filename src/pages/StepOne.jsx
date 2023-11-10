@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Heading } from "../components/Heading";
 import { Input } from "../components/Input";
-import { Button } from "../components/Button";
-import { Span } from "../components/Span";
+// import { Button } from "../components/Button";
+// import { Span } from "../components/Span";
+import { LinkButton } from "../components/LinkButton";
+import { ProgressBar } from "../components/ProgressBar";
 
 const StepOne = () => {
   const [answerValue, setAnswerValue] = useState("");
@@ -19,18 +21,7 @@ const StepOne = () => {
     <div className="container">
       <div className="wrapper">
         <div className="single-input-quiz">
-          <div className="indicator">
-            <div className="indicator__text">
-              <Span spanText="Скидка за прохождение опроса:" />
-              <Span spanText="15%" />
-            </div>
-            <div className="indicator__progressbar">
-              <div className="indicator__unit indicator__unit-1"></div>
-              <div className="indicator__unit indicator__unit-2"></div>
-              <div className="indicator__unit indicator__unit-3"></div>
-              <div className="indicator__unit indicator__unit-4"></div>
-            </div>
-          </div>
+          <ProgressBar currentSrep={1} />
           <div className="question">
             <Heading text="1. Занимательный вопрос" headingType="h2" />
             <Input
@@ -42,7 +33,14 @@ const StepOne = () => {
               inputPlaceholder="Ваш ответ"
               errorMessage="Введите номер в правильном формате например"
             />
-            <Button onClick={clickHandler} buttonText="Далее" buttonType="button" />
+            <LinkButton
+              path="/step-two"
+              buttonText="Далее"
+              buttonType="button"
+              onClick={clickHandler}
+              isDisabled={!answerValue}
+            />
+            {/* <Button onClick={clickHandler} buttonText="Далее" buttonType="button" /> */}
           </div>
         </div>
       </div>
