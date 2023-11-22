@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Heading } from "../components/Heading";
 // import { Button } from "../components/Button";
 import { Input } from "../components/Input";
 import { LinkButton } from "../components/LinkButton";
+import { ThemeContext, themes } from "../contexts/themeContext";
 
 const Welcome = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Welcome = () => {
 
   const [nameError, setNameError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const goToNextPage = () => {
     if (nameValue && phoneValue) {
@@ -52,9 +55,10 @@ const Welcome = () => {
   };
 
   return (
-    <div className="container">
+    <div className={`container ${theme === themes.dark && '_dark'}`}>
       <div className="wrapper">
         <div className="welcome">
+          <button style={{ marginBottom: 16 }} type="button" onClick={toggleTheme}>преключи меня</button>
           <Heading text="Добро пожаловать" headingType="h1" />
           <form className="welcome__form">
             <Input
@@ -78,13 +82,11 @@ const Welcome = () => {
               errorMessage="Введите ваш номер в парильном формате"
             />
             <LinkButton
-              path="/step-one"
               buttonText="Далее"
               buttonType="button"
               isDisabled={!nameValue || !phoneValue}
               onClick={clickHandler}
             />
-            {/* <Button onClick={clickHandler} buttonType="submit" buttonText="Далее" /> */}
           </form>
         </div>
       </div>

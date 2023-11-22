@@ -15,7 +15,9 @@ export const ProgressBar = ({ currentSrep }) => {
           indicatorSteps.map((step, index) => (
             <div
               key={step}
-              className={`indicator__unit indicator__unit-1 ${index < currentSrep && '_active'}`}
+              className={
+                `indicator__unit indicator__unit-1 ${index < currentSrep && '_active'}`
+              }
             />
           ))
         }
