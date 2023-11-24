@@ -7,6 +7,7 @@ import StepTwo from "./pages/StepTwo";
 import StepThree from "./pages/StepThree";
 import StepFour from "./pages/StepFour";
 import Thanks from "./pages/Thanks";
+import AcceptPage from "./pages/AcceptPage";
 import "./styles/main.css";
 
 const routerConfig = createBrowserRouter([
@@ -33,6 +34,10 @@ const routerConfig = createBrowserRouter([
   {
     path: '/thanks',
     element: <Thanks />,
+  },
+  {
+    path: '/accept',
+    element: <AcceptPage />,
   },
 ]);
 
